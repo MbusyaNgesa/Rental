@@ -12,8 +12,11 @@ const axiosClient=axios.create({
 })
 
 
-const getCategory=()=>axiosClient.get('categories?populate=*');
+const getCategory=()=>axiosClient.get('/categories?populate=*');
+
+const getCarList=()=>axiosClient.get('/rentals?populate=*');
 
 export default{
-    getCategory
+    getCategory,
+    getCarList
 }

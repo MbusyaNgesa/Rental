@@ -42,7 +42,7 @@ function CategorySearch() {
         gap-3 items-center
         p-5 bg-primary m-2 round-lg cursor-pointer mt-5
         hover:scale-110 transition-all ease-in-out ' >
-          <Image src={item.attributes?.Icon?.data.attributes?.url} 
+          <Image src={item.attributes?.Icon?.data[0].attributes?.url} 
           alt='icon' 
           width={40} 
           height={40} />
