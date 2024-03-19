@@ -13,7 +13,7 @@ function CarList({carList}) {
 
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 
       gap-7 lg:grid-cols-5 mt-5'>
-        {carList&&carList.map((car,index)=>(
+        {carList.length>0?carList.map((car,index)=>(
             <div className='border-[1px] rounded-lg cursor-pointer
             hover:scale-110  ease-in-out hover:shadow-md' key={index} >
                 <Image src={car.attributes?.Image?.data[0].attributes?.url}
@@ -36,7 +36,18 @@ function CarList({carList}) {
                 
                 </div>
             </div>
-        ))}
+        ))
+      :
+      //Skeleton Effect
+      [1,2,3,4].map((item,index)=>(
+        <div className='h-[220px] bg-slate-200 
+        rounded-lg w-full animate-pulse'>
+
+        </div>
+
+      ))
+        
+      }
       </div>
     </div>
   )
