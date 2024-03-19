@@ -6,6 +6,7 @@ import CategorySearch from "./_components/CategorySearch";
 import CarList from "./_components/CarList";
 import GlobalApi from "./_utils/GlobalApi";
 import { useEffect, useState } from "react";
+import Drivers from "./_components/Drivers";
 
 export default function Home() {
 
@@ -32,6 +33,9 @@ export default function Home() {
 
      {/* Popular Doctor List */}
       < CarList carList={carList} />
+
+     {/* Drivers List */}
+     <Drivers />
 
     </div>
   );
