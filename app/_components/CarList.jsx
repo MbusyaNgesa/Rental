@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-function CarList({carList}) {
+function CarList({carList,heading='Popular Rentals'}) {
 
     if (!carList || carList.length === 0) {
         return <div>No cars available.</div>;
@@ -9,7 +9,7 @@ function CarList({carList}) {
 
   return (
     <div className='mb-10 px-8'>
-      <h2 className='font-bold text-xl'>Popular Rentals</h2>
+      <h2 className='font-bold text-xl'>{heading}</h2>
 
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 
       gap-7 lg:grid-cols-5 mt-5'>
