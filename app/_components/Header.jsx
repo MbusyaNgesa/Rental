@@ -1,7 +1,9 @@
+"use client"
 import { Button } from '@/components/ui/button'
+import { LoginLink, LogoutLink, useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function Header() {
 
@@ -23,6 +25,12 @@ function Header() {
         },
     ]
 
+    const {user} = useKindeBrowserClient();
+
+    useEffect(()=>{
+      console.log(user);
+    },[user])
+
   return (
     <div className='flex items-center justify-between
     p-4 shadow-sm '>
@@ -42,7 +50,20 @@ function Header() {
          ))}
           </ul>
       </div>
-      <Button>Get Started</Button>
+            {user?
+            <Image src={user?.picture} alt='profile-image'
+            width={50}
+            height={50}
+            className='rounded-full'
+            />
+             // <LogoutLink >
+            //    <Button variant='outline'>Log out</Button>
+           //   </LogoutLink>
+              :
+              <LoginLink><Button>Get Started</Button></LoginLink>
+            }
+              
+              
 
     </div>
   )
