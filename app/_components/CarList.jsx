@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link';
 import React from 'react'
 
 function CarList({carList,heading='Popular Rentals'}) {
@@ -29,11 +30,11 @@ function CarList({carList,heading='Popular Rentals'}) {
                     px-2 text-primary'> {car.categories?.data[0].attributes?.Name} </h2>
                     <h2 className='font-bold text-[15px]
                     bg-white p-1 rounded-full px-2' >{car.attributes?.Name}</h2>
-                
+                  <Link href={'/details/'+car?.id} className='w-full'>
                 <h2 className='p-2 px-3 border-[1px] 
                 border-primary text-primary rounded-full w-full text-center text-[11px] 
                 cursor-pointer hover:bg-primary hover:text-white  '> Book Now</h2>
-                
+                </Link>
                 </div>
             </div>
         ))
