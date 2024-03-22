@@ -18,8 +18,11 @@ const getCarList=()=>axiosClient.get('/rentals?populate=*');
 
 const getCarByCategory=()=>axiosClient.get('/rentals?populate=*');
 
+const getCarById=(id)=>axiosClient.get('/rentals?populate=*');
+
 export default{
     getCategory,
     getCarList,
-    getCarByCategory
+    getCarByCategory,
+    getCarById
 }
