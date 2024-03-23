@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { MapPin } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
+import BookAppointment from './BookAppointment'
 
 function CarDetail({car}) {
   return (
@@ -23,7 +24,8 @@ function CarDetail({car}) {
                 <MapPin />
                   <span>Kilimani Area</span>
                 </h2>
-                <Button className=' mt-3 rounded-full'>Book Car</Button>
+                
+                <BookAppointment />
             </div>
            
            {/*About Car*/}
