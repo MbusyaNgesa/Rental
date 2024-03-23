@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import {
     Dialog,
+    DialogClose,
     DialogContent,
     DialogDescription,
+    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -10,13 +12,17 @@ import {
 import { Button } from '@/components/ui/button'
 import { Calendar } from "@/components/ui/calendar"
 import { CalendarDays, Clock } from 'lucide-react'
+import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'
+import GlobalApi from '@/app/_utils/GlobalApi'
+import { toast } from 'sonner'
 
   
-function BookAppointment() {
+function BookAppointment({car}) {
 
     const [date, setDate] = useState(new Date());
     const [timeSlot, setTimeSlot] = useState([]);
     const [selectedTimeslot, setSelectedTimeSlot]=useState();
+    const {user}=useKindeBrowserClient();
 
     useEffect(()=>{
         getTime();
@@ -44,6 +50,31 @@ function BookAppointment() {
         setTimeSlot(timeList)
     };
 
+    const saveBooking=()=>{
+        const data={
+            data:{
+                Username:user.given_name+" "+user.family_name,
+                Email:user.email,
+                Date:date,
+                Time:selectedTimeslot,
+                car:car.id,
+            }
+        }
+        console.log(data)
+
+        GlobalApi.bookAppointment(data).then(resp=>{
+            console.log(resp);
+            if(resp)
+            {
+                toast("Booking Confirmation sent on Email")
+            }
+        })
+    }
+
+    const isPastDay=(day)=>{
+        return day<=new Date();
+    }
+
   return (
     <Dialog>
   <DialogTrigger>
@@ -67,6 +98,7 @@ function BookAppointment() {
                         mode="single"
                          selected={date}
                         onSelect={setDate}
+                        disabled={isPastDay}
                         className="rounded-md border"
                     />
                    </div>
@@ -96,6 +128,22 @@ function BookAppointment() {
         </div>
       </DialogDescription>
     </DialogHeader>
+    <DialogFooter className="sm:justify-end">
+          <DialogClose asChild>
+            <>
+            <Button type="button" 
+            className="text-red-500 border-red-500"
+            variant="outline">
+              Close
+            </Button>
+            <Button type="button" disabled={!(date&&selectedTimeslot)}
+            onClick={()=>saveBooking()}
+            >
+              Submit 
+            </Button>
+            </>
+          </DialogClose>
+        </DialogFooter>
   </DialogContent>
 </Dialog>
 

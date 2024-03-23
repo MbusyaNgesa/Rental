@@ -18,11 +18,14 @@ const getCarList=()=>axiosClient.get('/rentals?populate=*');
 
 const getCarByCategory=()=>axiosClient.get('/rentals?populate=*');
 
-const getCarById=(id)=>axiosClient.get('/rentals?populate=*');
+const getCarById=()=>axiosClient.get('/rentals?populate=*');
+
+const bookAppointment=(data)=>axiosClient.post('/bookings',data);
 
 export default{
     getCategory,
     getCarList,
     getCarByCategory,
-    getCarById
+    getCarById,
+    bookAppointment
 }

@@ -25,7 +25,7 @@ function CarDetail({car}) {
                   <span>Kilimani Area</span>
                 </h2>
                 
-                <BookAppointment />
+                <BookAppointment car={car} />
             </div>
            
            {/*About Car*/}
