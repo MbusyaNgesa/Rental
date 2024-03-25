@@ -19,7 +19,7 @@ function Details({params}) {
 
   return (
     <div className='p-5 md:px-20'>
-      <h2 className='font-bold text-[22px]'>Details</h2>\
+      <h2 className='font-bold text-[22px]'>Details</h2>
 
       <div className='grid grid-cols-1 lg:grid-cols-4' >
         {/*Car Details*/}

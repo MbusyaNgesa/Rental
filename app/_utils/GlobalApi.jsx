@@ -24,7 +24,9 @@ const bookAppointment=(data)=>axiosClient.post('/bookings',data);
 
 const sendEmail=(data)=>axiosClient.post('/Email',data);
 
-const getDrivers=()=>axiosClient.get('/rentals?populate=*');
+const getDrivers=()=>axiosClient.get('/drivers?populate=*');
+
+const getDriverByCategory=(category)=>axiosClient.get('/drivers?filters[categories][Name][$in]'+category+ "&populate=*" )
 
 export default{
     getCategory,

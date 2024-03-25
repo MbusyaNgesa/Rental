@@ -11,15 +11,25 @@ import Drivers from "./_components/Drivers";
 export default function Home() {
 
   const [carList,setCarList]=useState([]);
+  const [drivers,setDrivers]=useState([]);
 
   useEffect(()=>{
     getCarList();
+    getDrivers();
+
   }, [])
 
   const getCarList=() =>{
     GlobalApi.getCarList().then(resp=>{
       console.log(resp.data.data);
       setCarList(resp.data.data);
+    })
+  }
+
+  const getDrivers=() =>{
+    GlobalApi.getDrivers().then(resp=>{
+      console.log(resp.data.data);
+      setDrivers(resp.data.data);
     })
   }
 
@@ -35,7 +45,7 @@ export default function Home() {
       < CarList carList={carList} />
 
      {/* Drivers List */}
-     <Drivers />
+     <Drivers drivers={drivers} />
 
     </div>
   );
