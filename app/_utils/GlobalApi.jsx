@@ -22,10 +22,16 @@ const getCarById=()=>axiosClient.get('/rentals?populate=*');
 
 const bookAppointment=(data)=>axiosClient.post('/bookings',data);
 
+const sendEmail=(data)=>axiosClient.post('/Email',data);
+
+const getDrivers=()=>axiosClient.get('/rentals?populate=*');
+
 export default{
     getCategory,
     getCarList,
     getCarByCategory,
     getCarById,
-    bookAppointment
+    bookAppointment,
+    sendEmail,
+    getDrivers
 }
